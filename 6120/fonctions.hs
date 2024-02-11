@@ -1,25 +1,17 @@
 -- Fonctions
 
-supprimerIntervalle:: (Int,Int) -> [Int] -> [Int]
-supprimerIntervalle (_,_) [] = []
-supprimerIntervalle (x,y) z = filter (>=x) $ filter (<=y) z
+mystere::Num a => [[a]] -> [a]
+mystere [[]] = []
+mystere xs = map (negate.sum.tail) xs
 
+listeDoubles::Num a => [a] -> [a]
+listeDoubles a = map (*2) a
 
-supprimerIntervalle2:: (Int,Int) -> [Int] -> [Int]
-supprimerIntervalle2 (_,_) [] = []
-supprimerIntervalle2 (x,y) z = filter (`elem` [x..y]) z
+somme::Num a => [a] -> a
+somme a = foldl1 (+) a
 
-compteurInt::Int -> [Int] -> Int
-compteurInt _ [] = 0
-compteurInt x z = length $ filter (x==) z
+produit::Num a => [a] -> a
+produit a = foldl1 (*) a
 
-compteurInt2::Int -> [Int] -> Int
-compteurInt2 _ [] = 0
-compteurInt2 x z = length $ [y | y <- z, x == y]
-
-compteurInt3::Int -> [Int] -> Int
-compteurInt3 _ [] = 0
-compteurInt3 x z = length $ filter (\y -> y == x) z
-
-sumMatrice::Num a => [[a]] -> [[a]] -> [[a]]
-sumMatrice a b = (zipWith.zipWith) (+) a b
+sommeCarre::Num a => [a] -> a
+sommeCarre a = foldl1 (\x y -> x + y^2) a
