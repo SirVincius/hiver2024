@@ -4,7 +4,7 @@ CREATE TABLE article (
     auteur TEXT,
     date_de_publication date,
     contenu TEXT
-)
+);
 
 CREATE TABLE utilisateur (
     prenom TEXT,
@@ -13,4 +13,4 @@ CREATE TABLE utilisateur (
     mot_de_passe_salt TEXT,
     mot_de_passe_hash TEXT,
     photo TEXT
-)
+);
