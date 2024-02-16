@@ -14,15 +14,20 @@
       <hr />
       <div id="place-and-date">Québec, Montréal 2024-01-01</div>
       <hr />
-      <div class="article-container">
-        <h2>Les enfants malheureux</h2>
-        <p>Vincent Brunelle</p>
-        <p>2024-01-01</p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita,
-        corrupti, beatae blanditiis hic excepturi dolorum veritatis dolores
-        quasi eligendi odit laborum praesentium temporibus ipsa natus fugiat
-        ullam sapiente maxime quidem.
-      </div>
+      <ul>
+        {% for article in articles%} {% if article[3] < '2023-01-01' %}
+        <li>
+          <article class="article-container">
+            <h2>{{article[1]}} #{{article[0]}}</h2>
+            <p class="auteur">Auteur: {{article[2]}}</p>
+            <time class="date-de-publication"
+              >Date de publication: {{article[3]}}</time
+            >
+            <p>{{article[4]}}</p>
+          </article>
+        </li>
+        {% endif %} {% endfor %}
+      </ul>
     </div>
   </body>
 </html>

@@ -10,7 +10,7 @@ CREATE TABLE utilisateur (
     prenom TEXT,
     nom TEXT,
     courriel TEXT,
-    mot_de_passe_salt TEXT,
-    mot_de_passe_hash TEXT,
+    salt TEXT,
+    hash TEXT,
     photo TEXT
 );
