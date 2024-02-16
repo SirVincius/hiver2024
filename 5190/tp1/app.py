@@ -1,4 +1,4 @@
-from flask import Flask, render_template, g
+from flask import Flask, render_template, g, request
 from database import Database
 from datetime import date
 import re
@@ -21,15 +21,26 @@ def deconnection():
     if database is not None:
         database.deconnection()
 
-@app.route("/")
+
+@app.route("/", methods=["GET"])
 def home():
     database = Database()
-    articles = database.rechercher_articles("5 Lorem")
+    articles = database.obtenir_articles()
+    return render_template("index.html", articles=articles)
+
+
+@app.route("/", methods=["POST"])
+def rechercher():
+    mots_cles = request.form["mots-cles"]
+    database = Database()
+    articles = database.rechercher_articles(mots_cles)
     return render_template("index.html", articles=articles)
 
 @app.route("/article/<identifiant>")
-def article():
-    return
+def article(identifiant):
+    database = Database()
+    article = database.rechercher_article_specifique(identifiant)
+    return render_template("/article.html", article=article)
 
 @app.route("/admin")
 def admin():

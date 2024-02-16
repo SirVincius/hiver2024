@@ -64,3 +64,18 @@ class Database():
         connection.close()
 
         return article
+    
+    def rechercher_article_specifique(self, identifiant):
+        connection = self.get_connection()
+        cursor = connection.cursor()
+        cursor.execute(
+            """SELECT * FROM article 
+                WHERE identifiant LIKE ?""", (identifiant,)
+        )
+
+        article = cursor.fetchone()
+
+        cursor.close()
+        connection.close()
+
+        return article
