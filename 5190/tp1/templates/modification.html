@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modification</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+  <form action="/envoyer_modifications" method="post">
+    <article class="article-container">
+      <h2>Article #<span>{{article[0]}}</span></h2>
+      <p class="auteur">Auteur: {{article[2]}}</p>
+      <time class="date-de-publication"
+        >Date de publication: {{article[3]}}</time
+      >
+      <h2>Titre</h2>
+      <input type="text" value="{{article[1]}}">
+      <h2>Contenu</h2>
+      <textarea class="modification-input-text" value="{{article[4]}}">{{article[4]}}</textarea>
+    </article>
+    <button type="submit">Modifier</button>
+  </form>
+  </body>
+</html>

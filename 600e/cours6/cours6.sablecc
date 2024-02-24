@@ -1,0 +1,30 @@
+Package cours6.syntax;
+
+Helpers
+  digit = ['0'..'9'];
+
+Tokens
+  
+  plus = '+';
+  minus = '-';
+  l_par = '(';
+  r_par = ')';
+  
+  num = digit+;
+  
+  blank = (' ' | 9 | 13 | 10)+;
+  
+IgnoredTokens
+  blank;  
+
+Productions
+
+  exp =
+    {add} [left]:exp plus [right]:term |
+    {sub} [left]:exp minus [right]:term |
+    {simple} term;
+    
+  term =
+    {num} num |
+    {par} l_par exp r_par;
+      

@@ -4,9 +4,7 @@
 body {
   display: flex;
   justify-content: center;
-  color: #2f2f2f;
-}
-
+  color:identifiant 
 .main-container {
   max-width: 1920px;
   min-width: 350px;
@@ -20,7 +18,7 @@ body {
 }
 
 #main-title {
-  font-size: 96px;
+  font-sidentifiant ize: 96px;
   text-align: center;
 }
 
@@ -28,10 +26,10 @@ body {
   text-align: center;
 }
 
-.article-container {
+.articleidentifiant -container {
   display: flex;
   position: relative;
-}
+}identifiant 
 */
 
 .auteur {
@@ -43,4 +41,10 @@ body {
   font-size: 18px;
   color: grey;
   margin: 5px 0px 5px 0px;
+}
+
+.modification-input-text {
+  height: 100%;
+  width: 100%;
+  text-wrap: wrap;
 }
