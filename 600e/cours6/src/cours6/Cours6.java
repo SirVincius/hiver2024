@@ -18,6 +18,8 @@ public class Cours6 {
 		
 		Evaluator evaluator = new Evaluator();
 		tree.apply(evaluator);
+		
+		System.out.println(evaluator.currentResult);
 	}
 
 }

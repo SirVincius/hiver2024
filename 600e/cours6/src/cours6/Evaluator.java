@@ -1,25 +1,58 @@
 package cours6;
 
 import cours6.syntax.analysis.*;
-import cours6.syntax.node.ANumTerm;
-import cours6.syntax.node.TPlus;
+import cours6.syntax.node.*;
 
 public class Evaluator extends DepthFirstAdapter {
+	
+	Integer currentResult;
+	
+	private void visit(Node node) {
+		
+		if ( node != null) {
+			node.apply(this);
+		}
+		
+	}
+	
+	int eval(Node node) {
+		
+		visit(node);
+		int result = this.currentResult;
+		currentResult = null;
+		
+		return result;
+		
+	}
 	
 	@Override
 	public void caseANumTerm(ANumTerm node) {
 		String text = node.getNum().getText();
 		try {
-			Integer.parseInt(text);
+			this.currentResult = Integer.parseInt(text);
 		} catch (NumberFormatException e) {
 			System.out.println("Mauvais format pour le nombre " + node.getNum().getLine());
 		}
 	}
-
+	
+	
 	@Override
-	public void caseTPlus(TPlus node) {
+	public void caseAAddExp(AAddExp node) {
+	
+		int left = eval(node.getLeft());
+		int right = eval(node.getRight());
 		
+		this.currentResult = left + right;
 		
+	}
+	
+	@Override
+	public void caseASubExp(ASubExp node) {
+		
+		int left = eval(node.getLeft());
+		int right = eval(node.getRight());
+		
+		this.currentResult = left - right;
 		
 	}
 	
