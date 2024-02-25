@@ -5,7 +5,15 @@ import cours6.syntax.node.*;
 
 public class Evaluator extends DepthFirstAdapter {
 	
-	Integer currentResult;
+	private Evaluator() {
+	}
+	
+	public static int evaluate(Node tree) {
+		Evaluator evaluator = new Evaluator()
+;		return evaluator.eval(tree);
+	}
+	
+	private Integer currentResult;
 	
 	private void visit(Node node) {
 		
