@@ -87,6 +87,18 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseAMultExp(AMultExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseADivExp(ADivExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseASimpleExp(ASimpleExp node)
     {
         defaultCase(node);
@@ -112,6 +124,18 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseTMinus(TMinus node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTStar(TStar node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTSlash(TSlash node)
     {
         defaultCase(node);
     }

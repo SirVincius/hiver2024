@@ -56,4 +56,23 @@ public class Evaluator extends DepthFirstAdapter {
 		
 	}
 	
+	@Override
+	public void caseAMultExp(AMultExp node) {
+		
+		int left = eval(node.getLeft());
+		int right = eval(node.getRight());
+		
+		currentResult = left * right;
+		
+	}
+	
+	public void caseADivExp(ADivExp node) {
+		
+		int left = eval(node.getLeft());
+		int right = eval(node.getRight());
+		
+		currentResult = left / right;
+		
+	}
+	
 }

@@ -14,12 +14,16 @@ public interface Analysis extends Switch
     void caseStart(Start node);
     void caseAAddExp(AAddExp node);
     void caseASubExp(ASubExp node);
+    void caseAMultExp(AMultExp node);
+    void caseADivExp(ADivExp node);
     void caseASimpleExp(ASimpleExp node);
     void caseANumTerm(ANumTerm node);
     void caseAParTerm(AParTerm node);
 
     void caseTPlus(TPlus node);
     void caseTMinus(TMinus node);
+    void caseTStar(TStar node);
+    void caseTSlash(TSlash node);
     void caseTLPar(TLPar node);
     void caseTRPar(TRPar node);
     void caseTNum(TNum node);

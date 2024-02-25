@@ -7,6 +7,8 @@ Tokens
   
   plus = '+';
   minus = '-';
+  star = '*';
+  slash = '/';
   l_par = '(';
   r_par = ')';
   
@@ -22,6 +24,8 @@ Productions
   exp =
     {add} [left]:exp plus [right]:term |
     {sub} [left]:exp minus [right]:term |
+    {mult} [left]:exp star [right]:term |
+    {div} [left]:exp slash [right]:term |
     {simple} term;
     
   term =
