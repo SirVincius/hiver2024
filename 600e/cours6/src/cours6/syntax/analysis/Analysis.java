@@ -16,6 +16,11 @@ public interface Analysis extends Switch
     void caseASubExp(ASubExp node);
     void caseAMultExp(AMultExp node);
     void caseADivExp(ADivExp node);
+<<<<<<< HEAD
+=======
+    void caseAModExp(AModExp node);
+    void caseASignExp(ASignExp node);
+>>>>>>> a3f0b03 (.)
     void caseASimpleExp(ASimpleExp node);
     void caseANumTerm(ANumTerm node);
     void caseAParTerm(AParTerm node);
@@ -24,6 +29,10 @@ public interface Analysis extends Switch
     void caseTMinus(TMinus node);
     void caseTStar(TStar node);
     void caseTSlash(TSlash node);
+<<<<<<< HEAD
+=======
+    void caseTModulo(TModulo node);
+>>>>>>> a3f0b03 (.)
     void caseTLPar(TLPar node);
     void caseTRPar(TRPar node);
     void caseTNum(TNum node);

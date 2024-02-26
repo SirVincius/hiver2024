@@ -222,12 +222,17 @@ public class Parser
                 push(goTo(0), list, false);
             }
             break;
+<<<<<<< HEAD
             case 4: /* reduce ASimpleExp */
+=======
+            case 4: /* reduce AModExp */
+>>>>>>> a3f0b03 (.)
             {
                 ArrayList<Object> list = new4();
                 push(goTo(0), list, false);
             }
             break;
+<<<<<<< HEAD
             case 5: /* reduce ANumTerm */
             {
                 ArrayList<Object> list = new5();
@@ -237,6 +242,29 @@ public class Parser
             case 6: /* reduce AParTerm */
             {
                 ArrayList<Object> list = new6();
+=======
+            case 5: /* reduce ASignExp */
+            {
+                ArrayList<Object> list = new5();
+                push(goTo(0), list, false);
+            }
+            break;
+            case 6: /* reduce ASimpleExp */
+            {
+                ArrayList<Object> list = new6();
+                push(goTo(0), list, false);
+            }
+            break;
+            case 7: /* reduce ANumTerm */
+            {
+                ArrayList<Object> list = new7();
+                push(goTo(1), list, false);
+            }
+            break;
+            case 8: /* reduce AParTerm */
+            {
+                ArrayList<Object> list = new8();
+>>>>>>> a3f0b03 (.)
                 push(goTo(1), list, false);
             }
             break;
@@ -350,7 +378,60 @@ public class Parser
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
+<<<<<<< HEAD
     ArrayList<Object> new4() /* reduce ASimpleExp */
+=======
+    ArrayList<Object> new4() /* reduce AModExp */
+    {
+        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
+
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
+        PExp pexpNode1;
+        {
+            // Block
+        PExp pexpNode2;
+        TModulo tmoduloNode3;
+        PTerm ptermNode4;
+        pexpNode2 = (PExp)nodeArrayList1.get(0);
+        tmoduloNode3 = (TModulo)nodeArrayList2.get(0);
+        ptermNode4 = (PTerm)nodeArrayList3.get(0);
+
+        pexpNode1 = new AModExp(pexpNode2, tmoduloNode3, ptermNode4);
+        }
+	nodeList.add(pexpNode1);
+        return nodeList;
+    }
+
+
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    ArrayList<Object> new5() /* reduce ASignExp */
+    {
+        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
+
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
+        PExp pexpNode1;
+        {
+            // Block
+        TMinus tminusNode2;
+        PTerm ptermNode3;
+        tminusNode2 = (TMinus)nodeArrayList1.get(0);
+        ptermNode3 = (PTerm)nodeArrayList2.get(0);
+
+        pexpNode1 = new ASignExp(tminusNode2, ptermNode3);
+        }
+	nodeList.add(pexpNode1);
+        return nodeList;
+    }
+
+
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    ArrayList<Object> new6() /* reduce ASimpleExp */
+>>>>>>> a3f0b03 (.)
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
@@ -370,7 +451,11 @@ public class Parser
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
+<<<<<<< HEAD
     ArrayList<Object> new5() /* reduce ANumTerm */
+=======
+    ArrayList<Object> new7() /* reduce ANumTerm */
+>>>>>>> a3f0b03 (.)
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
@@ -390,7 +475,11 @@ public class Parser
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
+<<<<<<< HEAD
     ArrayList<Object> new6() /* reduce AParTerm */
+=======
+    ArrayList<Object> new8() /* reduce AParTerm */
+>>>>>>> a3f0b03 (.)
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
@@ -417,6 +506,7 @@ public class Parser
 
     private static int[][][] actionTable;
 /*      {
+<<<<<<< HEAD
 			{{-1, ERROR, 0}, {4, SHIFT, 1}, {6, SHIFT, 2}, },
 			{{-1, ERROR, 1}, {4, SHIFT, 1}, {6, SHIFT, 2}, },
 			{{-1, REDUCE, 5}, },
@@ -428,19 +518,46 @@ public class Parser
 			{{-1, ERROR, 8}, {4, SHIFT, 1}, {6, SHIFT, 2}, },
 			{{-1, ERROR, 9}, {4, SHIFT, 1}, {6, SHIFT, 2}, },
 			{{-1, REDUCE, 6}, },
+=======
+			{{-1, ERROR, 0}, {1, SHIFT, 1}, {5, SHIFT, 2}, {7, SHIFT, 3}, },
+			{{-1, ERROR, 1}, {5, SHIFT, 2}, {7, SHIFT, 3}, },
+			{{-1, ERROR, 2}, {1, SHIFT, 1}, {5, SHIFT, 2}, {7, SHIFT, 3}, },
+			{{-1, REDUCE, 7}, },
+			{{-1, ERROR, 4}, {0, SHIFT, 8}, {1, SHIFT, 9}, {2, SHIFT, 10}, {3, SHIFT, 11}, {4, SHIFT, 12}, {8, ACCEPT, -1}, },
+			{{-1, REDUCE, 6}, },
+			{{-1, REDUCE, 5}, },
+			{{-1, ERROR, 7}, {0, SHIFT, 8}, {1, SHIFT, 9}, {2, SHIFT, 10}, {3, SHIFT, 11}, {4, SHIFT, 12}, {6, SHIFT, 13}, },
+			{{-1, ERROR, 8}, {5, SHIFT, 2}, {7, SHIFT, 3}, },
+			{{-1, ERROR, 9}, {5, SHIFT, 2}, {7, SHIFT, 3}, },
+			{{-1, ERROR, 10}, {5, SHIFT, 2}, {7, SHIFT, 3}, },
+			{{-1, ERROR, 11}, {5, SHIFT, 2}, {7, SHIFT, 3}, },
+			{{-1, ERROR, 12}, {5, SHIFT, 2}, {7, SHIFT, 3}, },
+			{{-1, REDUCE, 8}, },
+>>>>>>> a3f0b03 (.)
 			{{-1, REDUCE, 0}, },
 			{{-1, REDUCE, 1}, },
 			{{-1, REDUCE, 2}, },
 			{{-1, REDUCE, 3}, },
+<<<<<<< HEAD
         };*/
     private static int[][][] gotoTable;
 /*      {
 			{{-1, 3}, {1, 5}, },
 			{{-1, 4}, {6, 11}, {7, 12}, {8, 13}, {9, 14}, },
+=======
+			{{-1, REDUCE, 4}, },
+        };*/
+    private static int[][][] gotoTable;
+/*      {
+			{{-1, 4}, {2, 7}, },
+			{{-1, 5}, {1, 6}, {8, 14}, {9, 15}, {10, 16}, {11, 17}, {12, 18}, },
+>>>>>>> a3f0b03 (.)
         };*/
     private static String[] errorMessages;
 /*      {
+			"expecting: '-', '(', num",
 			"expecting: '(', num",
+<<<<<<< HEAD
 			"expecting: '+', '-', '*', '/', ')', EOF",
 			"expecting: '+', '-', '*', '/', EOF",
 			"expecting: '+', '-', '*', '/', ')'",
@@ -448,6 +565,15 @@ public class Parser
     private static int[] errors;
 /*      {
 			0, 0, 1, 2, 1, 3, 0, 0, 0, 0, 1, 1, 1, 1, 1, 
+=======
+			"expecting: '+', '-', '*', '/', '%', ')', EOF",
+			"expecting: '+', '-', '*', '/', '%', EOF",
+			"expecting: '+', '-', '*', '/', '%', ')'",
+        };*/
+    private static int[] errors;
+/*      {
+			0, 1, 0, 2, 3, 2, 2, 4, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 
+>>>>>>> a3f0b03 (.)
         };*/
 
     static 

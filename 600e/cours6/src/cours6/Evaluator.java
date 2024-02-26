@@ -5,12 +5,18 @@ import cours6.syntax.node.*;
 
 public class Evaluator extends DepthFirstAdapter {
 	
+<<<<<<< HEAD
 	private Evaluator() {
 	}
 	
 	public static int evaluate(Node tree) {
 		Evaluator evaluator = new Evaluator()
 ;		return evaluator.eval(tree);
+=======
+	public static int evaluate(Node tree) {
+		Evaluator evaluator = new Evaluator();
+		return evaluator.eval(tree);
+>>>>>>> a3f0b03 (.)
 	}
 	
 	private Integer currentResult;
@@ -23,15 +29,31 @@ public class Evaluator extends DepthFirstAdapter {
 		
 	}
 	
-	int eval(Node node) {
+	private int eval(Node node) {
+		
+		if (this.currentResult != null)
+			throw new InternalError();
 		
 		visit(node);
+		
+		if(this.currentResult == null)
+			throw new InternalError();
+		
 		int result = this.currentResult;
 		currentResult = null;
 		
 		return result;
 		
 	}
+	
+	private void setResult(int value) {
+		if (this.currentResult != null)
+			throw new InternalError();
+		
+		this.currentResult = value;
+	}
+	
+	
 	
 	@Override
 	public void caseANumTerm(ANumTerm node) {
@@ -50,7 +72,7 @@ public class Evaluator extends DepthFirstAdapter {
 		int left = eval(node.getLeft());
 		int right = eval(node.getRight());
 		
-		this.currentResult = left + right;
+		setResult(left + right);
 		
 	}
 	
@@ -60,12 +82,13 @@ public class Evaluator extends DepthFirstAdapter {
 		int left = eval(node.getLeft());
 		int right = eval(node.getRight());
 		
-		this.currentResult = left - right;
+		setResult(left - right);
 		
 	}
 	
 	@Override
 	public void caseAMultExp(AMultExp node) {
+<<<<<<< HEAD
 		
 		int left = eval(node.getLeft());
 		int right = eval(node.getRight());
@@ -81,6 +104,43 @@ public class Evaluator extends DepthFirstAdapter {
 		
 		currentResult = left / right;
 		
+=======
+	
+		int left = eval(node.getLeft());
+		int right = eval(node.getRight());
+		
+		setResult(left * right);
+	
+	}
+	
+	@Override
+	public void caseADivExp(ADivExp node) {
+	
+		int left = eval(node.getLeft());
+		int right = eval(node.getRight());
+		
+		setResult(left / right);
+	
+	}
+	
+	@Override
+	public void caseAModExp(AModExp node) {
+	
+		int left = eval(node.getLeft());
+		int right = eval(node.getRight());
+		
+		setResult(left % right);
+	
+	}
+	
+	@Override
+	public void caseASignExp(ASignExp node) {
+	
+		int term = eval(node.getTerm());
+		
+		setResult(-term);
+	
+>>>>>>> a3f0b03 (.)
 	}
 	
 }

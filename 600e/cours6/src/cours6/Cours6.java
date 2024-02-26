@@ -16,10 +16,9 @@ public class Cours6 {
 		
 		Node tree = parser.parse();
 		
-		Evaluator evaluator = new Evaluator();
-		tree.apply(evaluator);
+		int result = Evaluator.evaluate(tree);
 		
-		System.out.println(evaluator.currentResult);
+		System.out.println(result);
 	}
 
 }

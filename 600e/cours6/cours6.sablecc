@@ -9,6 +9,10 @@ Tokens
   minus = '-';
   star = '*';
   slash = '/';
+<<<<<<< HEAD
+=======
+  modulo = '%';
+>>>>>>> a3f0b03 (.)
   l_par = '(';
   r_par = ')';
   
@@ -26,6 +30,11 @@ Productions
     {sub} [left]:exp minus [right]:term |
     {mult} [left]:exp star [right]:term |
     {div} [left]:exp slash [right]:term |
+<<<<<<< HEAD
+=======
+    {mod} [left]:exp modulo [right]:term |
+    {sign} minus term |
+>>>>>>> a3f0b03 (.)
     {simple} term;
     
   term =

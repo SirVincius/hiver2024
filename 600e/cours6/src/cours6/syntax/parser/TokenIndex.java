@@ -34,26 +34,51 @@ class TokenIndex extends AnalysisAdapter
     }
 
     @Override
+<<<<<<< HEAD
     public void caseTLPar(@SuppressWarnings("unused") TLPar node)
+=======
+    public void caseTModulo(@SuppressWarnings("unused") TModulo node)
+>>>>>>> a3f0b03 (.)
     {
         this.index = 4;
     }
 
     @Override
+<<<<<<< HEAD
     public void caseTRPar(@SuppressWarnings("unused") TRPar node)
+=======
+    public void caseTLPar(@SuppressWarnings("unused") TLPar node)
+>>>>>>> a3f0b03 (.)
     {
         this.index = 5;
     }
 
     @Override
+<<<<<<< HEAD
     public void caseTNum(@SuppressWarnings("unused") TNum node)
+=======
+    public void caseTRPar(@SuppressWarnings("unused") TRPar node)
+>>>>>>> a3f0b03 (.)
     {
         this.index = 6;
     }
 
     @Override
+<<<<<<< HEAD
     public void caseEOF(@SuppressWarnings("unused") EOF node)
     {
         this.index = 7;
     }
+=======
+    public void caseTNum(@SuppressWarnings("unused") TNum node)
+    {
+        this.index = 7;
+    }
+
+    @Override
+    public void caseEOF(@SuppressWarnings("unused") EOF node)
+    {
+        this.index = 8;
+    }
+>>>>>>> a3f0b03 (.)
 }

@@ -99,6 +99,21 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+<<<<<<< HEAD
+=======
+    public void caseAModExp(AModExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseASignExp(ASignExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+>>>>>>> a3f0b03 (.)
     public void caseASimpleExp(ASimpleExp node)
     {
         defaultCase(node);
@@ -141,6 +156,15 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+<<<<<<< HEAD
+=======
+    public void caseTModulo(TModulo node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+>>>>>>> a3f0b03 (.)
     public void caseTLPar(TLPar node)
     {
         defaultCase(node);
