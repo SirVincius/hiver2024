@@ -5,26 +5,26 @@ package cours6.syntax.node;
 import cours6.syntax.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AModExp extends PExp
+public final class ADivFactor extends PFactor
 {
-    private PExp _left_;
-    private TModulo _modulo_;
-    private PTerm _right_;
+    private PFactor _left_;
+    private TSlash _slash_;
+    private PSign _right_;
 
-    public AModExp()
+    public ADivFactor()
     {
         // Constructor
     }
 
-    public AModExp(
-        @SuppressWarnings("hiding") PExp _left_,
-        @SuppressWarnings("hiding") TModulo _modulo_,
-        @SuppressWarnings("hiding") PTerm _right_)
+    public ADivFactor(
+        @SuppressWarnings("hiding") PFactor _left_,
+        @SuppressWarnings("hiding") TSlash _slash_,
+        @SuppressWarnings("hiding") PSign _right_)
     {
         // Constructor
         setLeft(_left_);
 
-        setModulo(_modulo_);
+        setSlash(_slash_);
 
         setRight(_right_);
 
@@ -33,24 +33,24 @@ public final class AModExp extends PExp
     @Override
     public Object clone()
     {
-        return new AModExp(
+        return new ADivFactor(
             cloneNode(this._left_),
-            cloneNode(this._modulo_),
+            cloneNode(this._slash_),
             cloneNode(this._right_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAModExp(this);
+        ((Analysis) sw).caseADivFactor(this);
     }
 
-    public PExp getLeft()
+    public PFactor getLeft()
     {
         return this._left_;
     }
 
-    public void setLeft(PExp node)
+    public void setLeft(PFactor node)
     {
         if(this._left_ != null)
         {
@@ -70,16 +70,16 @@ public final class AModExp extends PExp
         this._left_ = node;
     }
 
-    public TModulo getModulo()
+    public TSlash getSlash()
     {
-        return this._modulo_;
+        return this._slash_;
     }
 
-    public void setModulo(TModulo node)
+    public void setSlash(TSlash node)
     {
-        if(this._modulo_ != null)
+        if(this._slash_ != null)
         {
-            this._modulo_.parent(null);
+            this._slash_.parent(null);
         }
 
         if(node != null)
@@ -92,15 +92,15 @@ public final class AModExp extends PExp
             node.parent(this);
         }
 
-        this._modulo_ = node;
+        this._slash_ = node;
     }
 
-    public PTerm getRight()
+    public PSign getRight()
     {
         return this._right_;
     }
 
-    public void setRight(PTerm node)
+    public void setRight(PSign node)
     {
         if(this._right_ != null)
         {
@@ -125,7 +125,7 @@ public final class AModExp extends PExp
     {
         return ""
             + toString(this._left_)
-            + toString(this._modulo_)
+            + toString(this._slash_)
             + toString(this._right_);
     }
 
@@ -139,9 +139,9 @@ public final class AModExp extends PExp
             return;
         }
 
-        if(this._modulo_ == child)
+        if(this._slash_ == child)
         {
-            this._modulo_ = null;
+            this._slash_ = null;
             return;
         }
 
@@ -160,19 +160,19 @@ public final class AModExp extends PExp
         // Replace child
         if(this._left_ == oldChild)
         {
-            setLeft((PExp) newChild);
+            setLeft((PFactor) newChild);
             return;
         }
 
-        if(this._modulo_ == oldChild)
+        if(this._slash_ == oldChild)
         {
-            setModulo((TModulo) newChild);
+            setSlash((TSlash) newChild);
             return;
         }
 
         if(this._right_ == oldChild)
         {
-            setRight((PTerm) newChild);
+            setRight((PSign) newChild);
             return;
         }
 

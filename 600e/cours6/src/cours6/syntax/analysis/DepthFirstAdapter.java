@@ -94,121 +94,6 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outASubExp(node);
     }
 
-    public void inAMultExp(AMultExp node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAMultExp(AMultExp node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAMultExp(AMultExp node)
-    {
-        inAMultExp(node);
-        if(node.getLeft() != null)
-        {
-            node.getLeft().apply(this);
-        }
-        if(node.getStar() != null)
-        {
-            node.getStar().apply(this);
-        }
-        if(node.getRight() != null)
-        {
-            node.getRight().apply(this);
-        }
-        outAMultExp(node);
-    }
-
-    public void inADivExp(ADivExp node)
-    {
-        defaultIn(node);
-    }
-
-    public void outADivExp(ADivExp node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseADivExp(ADivExp node)
-    {
-        inADivExp(node);
-        if(node.getLeft() != null)
-        {
-            node.getLeft().apply(this);
-        }
-        if(node.getSlash() != null)
-        {
-            node.getSlash().apply(this);
-        }
-        if(node.getRight() != null)
-        {
-            node.getRight().apply(this);
-        }
-        outADivExp(node);
-    }
-
-<<<<<<< HEAD
-=======
-    public void inAModExp(AModExp node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAModExp(AModExp node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAModExp(AModExp node)
-    {
-        inAModExp(node);
-        if(node.getLeft() != null)
-        {
-            node.getLeft().apply(this);
-        }
-        if(node.getModulo() != null)
-        {
-            node.getModulo().apply(this);
-        }
-        if(node.getRight() != null)
-        {
-            node.getRight().apply(this);
-        }
-        outAModExp(node);
-    }
-
-    public void inASignExp(ASignExp node)
-    {
-        defaultIn(node);
-    }
-
-    public void outASignExp(ASignExp node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseASignExp(ASignExp node)
-    {
-        inASignExp(node);
-        if(node.getMinus() != null)
-        {
-            node.getMinus().apply(this);
-        }
-        if(node.getTerm() != null)
-        {
-            node.getTerm().apply(this);
-        }
-        outASignExp(node);
-    }
-
->>>>>>> a3f0b03 (.)
     public void inASimpleExp(ASimpleExp node)
     {
         defaultIn(node);
@@ -223,11 +108,190 @@ public class DepthFirstAdapter extends AnalysisAdapter
     public void caseASimpleExp(ASimpleExp node)
     {
         inASimpleExp(node);
+        if(node.getFactor() != null)
+        {
+            node.getFactor().apply(this);
+        }
+        outASimpleExp(node);
+    }
+
+    public void inAMultFactor(AMultFactor node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAMultFactor(AMultFactor node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAMultFactor(AMultFactor node)
+    {
+        inAMultFactor(node);
+        if(node.getLeft() != null)
+        {
+            node.getLeft().apply(this);
+        }
+        if(node.getStar() != null)
+        {
+            node.getStar().apply(this);
+        }
+        if(node.getRight() != null)
+        {
+            node.getRight().apply(this);
+        }
+        outAMultFactor(node);
+    }
+
+    public void inADivFactor(ADivFactor node)
+    {
+        defaultIn(node);
+    }
+
+    public void outADivFactor(ADivFactor node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseADivFactor(ADivFactor node)
+    {
+        inADivFactor(node);
+        if(node.getLeft() != null)
+        {
+            node.getLeft().apply(this);
+        }
+        if(node.getSlash() != null)
+        {
+            node.getSlash().apply(this);
+        }
+        if(node.getRight() != null)
+        {
+            node.getRight().apply(this);
+        }
+        outADivFactor(node);
+    }
+
+    public void inAModFactor(AModFactor node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAModFactor(AModFactor node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAModFactor(AModFactor node)
+    {
+        inAModFactor(node);
+        if(node.getLeft() != null)
+        {
+            node.getLeft().apply(this);
+        }
+        if(node.getPercent() != null)
+        {
+            node.getPercent().apply(this);
+        }
+        if(node.getRight() != null)
+        {
+            node.getRight().apply(this);
+        }
+        outAModFactor(node);
+    }
+
+    public void inASimpleFactor(ASimpleFactor node)
+    {
+        defaultIn(node);
+    }
+
+    public void outASimpleFactor(ASimpleFactor node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseASimpleFactor(ASimpleFactor node)
+    {
+        inASimpleFactor(node);
+        if(node.getSign() != null)
+        {
+            node.getSign().apply(this);
+        }
+        outASimpleFactor(node);
+    }
+
+    public void inAPosSign(APosSign node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPosSign(APosSign node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPosSign(APosSign node)
+    {
+        inAPosSign(node);
+        if(node.getPlus() != null)
+        {
+            node.getPlus().apply(this);
+        }
+        if(node.getRight() != null)
+        {
+            node.getRight().apply(this);
+        }
+        outAPosSign(node);
+    }
+
+    public void inANegSign(ANegSign node)
+    {
+        defaultIn(node);
+    }
+
+    public void outANegSign(ANegSign node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseANegSign(ANegSign node)
+    {
+        inANegSign(node);
+        if(node.getMinus() != null)
+        {
+            node.getMinus().apply(this);
+        }
+        if(node.getRight() != null)
+        {
+            node.getRight().apply(this);
+        }
+        outANegSign(node);
+    }
+
+    public void inASimpleSign(ASimpleSign node)
+    {
+        defaultIn(node);
+    }
+
+    public void outASimpleSign(ASimpleSign node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseASimpleSign(ASimpleSign node)
+    {
+        inASimpleSign(node);
         if(node.getTerm() != null)
         {
             node.getTerm().apply(this);
         }
-        outASimpleExp(node);
+        outASimpleSign(node);
     }
 
     public void inANumTerm(ANumTerm node)

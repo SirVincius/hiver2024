@@ -5,18 +5,12 @@ import cours6.syntax.node.*;
 
 public class Evaluator extends DepthFirstAdapter {
 	
-<<<<<<< HEAD
 	private Evaluator() {
 	}
 	
 	public static int evaluate(Node tree) {
-		Evaluator evaluator = new Evaluator()
-;		return evaluator.eval(tree);
-=======
-	public static int evaluate(Node tree) {
-		Evaluator evaluator = new Evaluator();
+		Evaluator evaluator = new Evaluator();	
 		return evaluator.eval(tree);
->>>>>>> a3f0b03 (.)
 	}
 	
 	private Integer currentResult;
@@ -85,62 +79,53 @@ public class Evaluator extends DepthFirstAdapter {
 		setResult(left - right);
 		
 	}
-	
+
 	@Override
-	public void caseAMultExp(AMultExp node) {
-<<<<<<< HEAD
-		
-		int left = eval(node.getLeft());
-		int right = eval(node.getRight());
-		
-		currentResult = left * right;
-		
-	}
+	public void caseAMultFactor(AMultFactor node) {
 	
-	public void caseADivExp(ADivExp node) {
+			int left = eval(node.getLeft());
+			int right = eval((node.getRight()));
 		
-		int left = eval(node.getLeft());
-		int right = eval(node.getRight());
-		
-		currentResult = left / right;
-		
-=======
-	
-		int left = eval(node.getLeft());
-		int right = eval(node.getRight());
-		
-		setResult(left * right);
-	
+			setResult(left * right);
+			
 	}
 	
 	@Override
-	public void caseADivExp(ADivExp node) {
+	public void caseADivFactor(ADivFactor node) {
 	
 		int left = eval(node.getLeft());
-		int right = eval(node.getRight());
-		
+		int right = eval((node.getRight()));
+	
 		setResult(left / right);
-	
+		
 	}
 	
-	@Override
-	public void caseAModExp(AModExp node) {
+	public void caseAModFactor (AModFactor node) {
 	
 		int left = eval(node.getLeft());
-		int right = eval(node.getRight());
-		
+		int right = eval((node.getRight()));
+	
 		setResult(left % right);
+		
+	}
+	
+	@Override
+	public void caseAPosSign(APosSign node) {
+	
+		int left = eval(node.getRight());
+		
+		setResult(-left);
 	
 	}
 	
 	@Override
-	public void caseASignExp(ASignExp node) {
+	public void caseANegSign(ANegSign node) {
 	
-		int term = eval(node.getTerm());
 		
-		setResult(-term);
+		int left = eval(node.getRight());
+		
+		setResult(-left);
+		
 	
->>>>>>> a3f0b03 (.)
 	}
-	
 }

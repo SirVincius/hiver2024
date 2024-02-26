@@ -9,7 +9,7 @@ public final class AAddExp extends PExp
 {
     private PExp _left_;
     private TPlus _plus_;
-    private PTerm _right_;
+    private PFactor _right_;
 
     public AAddExp()
     {
@@ -19,7 +19,7 @@ public final class AAddExp extends PExp
     public AAddExp(
         @SuppressWarnings("hiding") PExp _left_,
         @SuppressWarnings("hiding") TPlus _plus_,
-        @SuppressWarnings("hiding") PTerm _right_)
+        @SuppressWarnings("hiding") PFactor _right_)
     {
         // Constructor
         setLeft(_left_);
@@ -95,12 +95,12 @@ public final class AAddExp extends PExp
         this._plus_ = node;
     }
 
-    public PTerm getRight()
+    public PFactor getRight()
     {
         return this._right_;
     }
 
-    public void setRight(PTerm node)
+    public void setRight(PFactor node)
     {
         if(this._right_ != null)
         {
@@ -172,7 +172,7 @@ public final class AAddExp extends PExp
 
         if(this._right_ == oldChild)
         {
-            setRight((PTerm) newChild);
+            setRight((PFactor) newChild);
             return;
         }
 

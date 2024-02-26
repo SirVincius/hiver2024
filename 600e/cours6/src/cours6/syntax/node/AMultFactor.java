@@ -5,26 +5,26 @@ package cours6.syntax.node;
 import cours6.syntax.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ASubExp extends PExp
+public final class AMultFactor extends PFactor
 {
-    private PExp _left_;
-    private TMinus _minus_;
-    private PFactor _right_;
+    private PFactor _left_;
+    private TStar _star_;
+    private PSign _right_;
 
-    public ASubExp()
+    public AMultFactor()
     {
         // Constructor
     }
 
-    public ASubExp(
-        @SuppressWarnings("hiding") PExp _left_,
-        @SuppressWarnings("hiding") TMinus _minus_,
-        @SuppressWarnings("hiding") PFactor _right_)
+    public AMultFactor(
+        @SuppressWarnings("hiding") PFactor _left_,
+        @SuppressWarnings("hiding") TStar _star_,
+        @SuppressWarnings("hiding") PSign _right_)
     {
         // Constructor
         setLeft(_left_);
 
-        setMinus(_minus_);
+        setStar(_star_);
 
         setRight(_right_);
 
@@ -33,24 +33,24 @@ public final class ASubExp extends PExp
     @Override
     public Object clone()
     {
-        return new ASubExp(
+        return new AMultFactor(
             cloneNode(this._left_),
-            cloneNode(this._minus_),
+            cloneNode(this._star_),
             cloneNode(this._right_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseASubExp(this);
+        ((Analysis) sw).caseAMultFactor(this);
     }
 
-    public PExp getLeft()
+    public PFactor getLeft()
     {
         return this._left_;
     }
 
-    public void setLeft(PExp node)
+    public void setLeft(PFactor node)
     {
         if(this._left_ != null)
         {
@@ -70,16 +70,16 @@ public final class ASubExp extends PExp
         this._left_ = node;
     }
 
-    public TMinus getMinus()
+    public TStar getStar()
     {
-        return this._minus_;
+        return this._star_;
     }
 
-    public void setMinus(TMinus node)
+    public void setStar(TStar node)
     {
-        if(this._minus_ != null)
+        if(this._star_ != null)
         {
-            this._minus_.parent(null);
+            this._star_.parent(null);
         }
 
         if(node != null)
@@ -92,15 +92,15 @@ public final class ASubExp extends PExp
             node.parent(this);
         }
 
-        this._minus_ = node;
+        this._star_ = node;
     }
 
-    public PFactor getRight()
+    public PSign getRight()
     {
         return this._right_;
     }
 
-    public void setRight(PFactor node)
+    public void setRight(PSign node)
     {
         if(this._right_ != null)
         {
@@ -125,7 +125,7 @@ public final class ASubExp extends PExp
     {
         return ""
             + toString(this._left_)
-            + toString(this._minus_)
+            + toString(this._star_)
             + toString(this._right_);
     }
 
@@ -139,9 +139,9 @@ public final class ASubExp extends PExp
             return;
         }
 
-        if(this._minus_ == child)
+        if(this._star_ == child)
         {
-            this._minus_ = null;
+            this._star_ = null;
             return;
         }
 
@@ -160,19 +160,19 @@ public final class ASubExp extends PExp
         // Replace child
         if(this._left_ == oldChild)
         {
-            setLeft((PExp) newChild);
+            setLeft((PFactor) newChild);
             return;
         }
 
-        if(this._minus_ == oldChild)
+        if(this._star_ == oldChild)
         {
-            setMinus((TMinus) newChild);
+            setStar((TStar) newChild);
             return;
         }
 
         if(this._right_ == oldChild)
         {
-            setRight((PFactor) newChild);
+            setRight((PSign) newChild);
             return;
         }
 

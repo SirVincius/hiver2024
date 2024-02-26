@@ -5,39 +5,39 @@ package cours6.syntax.node;
 import cours6.syntax.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ASignExp extends PExp
+public final class ANegSign extends PSign
 {
     private TMinus _minus_;
-    private PTerm _term_;
+    private PTerm _right_;
 
-    public ASignExp()
+    public ANegSign()
     {
         // Constructor
     }
 
-    public ASignExp(
+    public ANegSign(
         @SuppressWarnings("hiding") TMinus _minus_,
-        @SuppressWarnings("hiding") PTerm _term_)
+        @SuppressWarnings("hiding") PTerm _right_)
     {
         // Constructor
         setMinus(_minus_);
 
-        setTerm(_term_);
+        setRight(_right_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ASignExp(
+        return new ANegSign(
             cloneNode(this._minus_),
-            cloneNode(this._term_));
+            cloneNode(this._right_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseASignExp(this);
+        ((Analysis) sw).caseANegSign(this);
     }
 
     public TMinus getMinus()
@@ -65,16 +65,16 @@ public final class ASignExp extends PExp
         this._minus_ = node;
     }
 
-    public PTerm getTerm()
+    public PTerm getRight()
     {
-        return this._term_;
+        return this._right_;
     }
 
-    public void setTerm(PTerm node)
+    public void setRight(PTerm node)
     {
-        if(this._term_ != null)
+        if(this._right_ != null)
         {
-            this._term_.parent(null);
+            this._right_.parent(null);
         }
 
         if(node != null)
@@ -87,7 +87,7 @@ public final class ASignExp extends PExp
             node.parent(this);
         }
 
-        this._term_ = node;
+        this._right_ = node;
     }
 
     @Override
@@ -95,7 +95,7 @@ public final class ASignExp extends PExp
     {
         return ""
             + toString(this._minus_)
-            + toString(this._term_);
+            + toString(this._right_);
     }
 
     @Override
@@ -108,9 +108,9 @@ public final class ASignExp extends PExp
             return;
         }
 
-        if(this._term_ == child)
+        if(this._right_ == child)
         {
-            this._term_ = null;
+            this._right_ = null;
             return;
         }
 
@@ -127,9 +127,9 @@ public final class ASignExp extends PExp
             return;
         }
 
-        if(this._term_ == oldChild)
+        if(this._right_ == oldChild)
         {
-            setTerm((PTerm) newChild);
+            setRight((PTerm) newChild);
             return;
         }
 

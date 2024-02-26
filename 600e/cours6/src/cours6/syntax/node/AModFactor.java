@@ -5,26 +5,26 @@ package cours6.syntax.node;
 import cours6.syntax.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AMultExp extends PExp
+public final class AModFactor extends PFactor
 {
-    private PExp _left_;
-    private TStar _star_;
-    private PTerm _right_;
+    private PFactor _left_;
+    private TPercent _percent_;
+    private PSign _right_;
 
-    public AMultExp()
+    public AModFactor()
     {
         // Constructor
     }
 
-    public AMultExp(
-        @SuppressWarnings("hiding") PExp _left_,
-        @SuppressWarnings("hiding") TStar _star_,
-        @SuppressWarnings("hiding") PTerm _right_)
+    public AModFactor(
+        @SuppressWarnings("hiding") PFactor _left_,
+        @SuppressWarnings("hiding") TPercent _percent_,
+        @SuppressWarnings("hiding") PSign _right_)
     {
         // Constructor
         setLeft(_left_);
 
-        setStar(_star_);
+        setPercent(_percent_);
 
         setRight(_right_);
 
@@ -33,24 +33,24 @@ public final class AMultExp extends PExp
     @Override
     public Object clone()
     {
-        return new AMultExp(
+        return new AModFactor(
             cloneNode(this._left_),
-            cloneNode(this._star_),
+            cloneNode(this._percent_),
             cloneNode(this._right_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAMultExp(this);
+        ((Analysis) sw).caseAModFactor(this);
     }
 
-    public PExp getLeft()
+    public PFactor getLeft()
     {
         return this._left_;
     }
 
-    public void setLeft(PExp node)
+    public void setLeft(PFactor node)
     {
         if(this._left_ != null)
         {
@@ -70,16 +70,16 @@ public final class AMultExp extends PExp
         this._left_ = node;
     }
 
-    public TStar getStar()
+    public TPercent getPercent()
     {
-        return this._star_;
+        return this._percent_;
     }
 
-    public void setStar(TStar node)
+    public void setPercent(TPercent node)
     {
-        if(this._star_ != null)
+        if(this._percent_ != null)
         {
-            this._star_.parent(null);
+            this._percent_.parent(null);
         }
 
         if(node != null)
@@ -92,15 +92,15 @@ public final class AMultExp extends PExp
             node.parent(this);
         }
 
-        this._star_ = node;
+        this._percent_ = node;
     }
 
-    public PTerm getRight()
+    public PSign getRight()
     {
         return this._right_;
     }
 
-    public void setRight(PTerm node)
+    public void setRight(PSign node)
     {
         if(this._right_ != null)
         {
@@ -125,7 +125,7 @@ public final class AMultExp extends PExp
     {
         return ""
             + toString(this._left_)
-            + toString(this._star_)
+            + toString(this._percent_)
             + toString(this._right_);
     }
 
@@ -139,9 +139,9 @@ public final class AMultExp extends PExp
             return;
         }
 
-        if(this._star_ == child)
+        if(this._percent_ == child)
         {
-            this._star_ = null;
+            this._percent_ = null;
             return;
         }
 
@@ -160,19 +160,19 @@ public final class AMultExp extends PExp
         // Replace child
         if(this._left_ == oldChild)
         {
-            setLeft((PExp) newChild);
+            setLeft((PFactor) newChild);
             return;
         }
 
-        if(this._star_ == oldChild)
+        if(this._percent_ == oldChild)
         {
-            setStar((TStar) newChild);
+            setPercent((TPercent) newChild);
             return;
         }
 
         if(this._right_ == oldChild)
         {
-            setRight((PTerm) newChild);
+            setRight((PSign) newChild);
             return;
         }
 

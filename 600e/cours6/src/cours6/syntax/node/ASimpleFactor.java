@@ -5,46 +5,46 @@ package cours6.syntax.node;
 import cours6.syntax.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ASimpleExp extends PExp
+public final class ASimpleFactor extends PFactor
 {
-    private PFactor _factor_;
+    private PSign _sign_;
 
-    public ASimpleExp()
+    public ASimpleFactor()
     {
         // Constructor
     }
 
-    public ASimpleExp(
-        @SuppressWarnings("hiding") PFactor _factor_)
+    public ASimpleFactor(
+        @SuppressWarnings("hiding") PSign _sign_)
     {
         // Constructor
-        setFactor(_factor_);
+        setSign(_sign_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ASimpleExp(
-            cloneNode(this._factor_));
+        return new ASimpleFactor(
+            cloneNode(this._sign_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseASimpleExp(this);
+        ((Analysis) sw).caseASimpleFactor(this);
     }
 
-    public PFactor getFactor()
+    public PSign getSign()
     {
-        return this._factor_;
+        return this._sign_;
     }
 
-    public void setFactor(PFactor node)
+    public void setSign(PSign node)
     {
-        if(this._factor_ != null)
+        if(this._sign_ != null)
         {
-            this._factor_.parent(null);
+            this._sign_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class ASimpleExp extends PExp
             node.parent(this);
         }
 
-        this._factor_ = node;
+        this._sign_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._factor_);
+            + toString(this._sign_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._factor_ == child)
+        if(this._sign_ == child)
         {
-            this._factor_ = null;
+            this._sign_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class ASimpleExp extends PExp
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._factor_ == oldChild)
+        if(this._sign_ == oldChild)
         {
-            setFactor((PFactor) newChild);
+            setSign((PSign) newChild);
             return;
         }
 

@@ -87,34 +87,49 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAMultExp(AMultExp node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseADivExp(ADivExp node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-<<<<<<< HEAD
-=======
-    public void caseAModExp(AModExp node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseASignExp(ASignExp node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
->>>>>>> a3f0b03 (.)
     public void caseASimpleExp(ASimpleExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAMultFactor(AMultFactor node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseADivFactor(ADivFactor node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAModFactor(AModFactor node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseASimpleFactor(ASimpleFactor node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPosSign(APosSign node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseANegSign(ANegSign node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseASimpleSign(ASimpleSign node)
     {
         defaultCase(node);
     }
@@ -156,15 +171,12 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-<<<<<<< HEAD
-=======
-    public void caseTModulo(TModulo node)
+    public void caseTPercent(TPercent node)
     {
         defaultCase(node);
     }
 
     @Override
->>>>>>> a3f0b03 (.)
     public void caseTLPar(TLPar node)
     {
         defaultCase(node);

@@ -9,13 +9,9 @@ Tokens
   minus = '-';
   star = '*';
   slash = '/';
-<<<<<<< HEAD
-=======
-  modulo = '%';
->>>>>>> a3f0b03 (.)
+  percent = '%';
   l_par = '(';
   r_par = ')';
-  
   num = digit+;
   
   blank = (' ' | 9 | 13 | 10)+;
@@ -26,16 +22,20 @@ IgnoredTokens
 Productions
 
   exp =
-    {add} [left]:exp plus [right]:term |
-    {sub} [left]:exp minus [right]:term |
-    {mult} [left]:exp star [right]:term |
-    {div} [left]:exp slash [right]:term |
-<<<<<<< HEAD
-=======
-    {mod} [left]:exp modulo [right]:term |
-    {sign} minus term |
->>>>>>> a3f0b03 (.)
-    {simple} term;
+    {add} [left]:exp plus [right]:factor |
+    {sub} [left]:exp minus [right]:factor |
+    {simple} factor;
+    
+  factor =
+  	{mult} [left]:factor star [right]:sign |
+  	{div} [left]:factor slash [right]:sign |
+  	{mod} [left]:factor percent [right]:sign |
+	{simple} sign;
+	
+	sign =
+		{pos} plus [right]:term |
+		{neg} minus [right]:term |
+		{simple} term;
     
   term =
     {num} num |

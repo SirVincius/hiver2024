@@ -5,26 +5,22 @@ package cours6.syntax.node;
 import cours6.syntax.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ADivExp extends PExp
+public final class APosSign extends PSign
 {
-    private PExp _left_;
-    private TSlash _slash_;
+    private TPlus _plus_;
     private PTerm _right_;
 
-    public ADivExp()
+    public APosSign()
     {
         // Constructor
     }
 
-    public ADivExp(
-        @SuppressWarnings("hiding") PExp _left_,
-        @SuppressWarnings("hiding") TSlash _slash_,
+    public APosSign(
+        @SuppressWarnings("hiding") TPlus _plus_,
         @SuppressWarnings("hiding") PTerm _right_)
     {
         // Constructor
-        setLeft(_left_);
-
-        setSlash(_slash_);
+        setPlus(_plus_);
 
         setRight(_right_);
 
@@ -33,28 +29,27 @@ public final class ADivExp extends PExp
     @Override
     public Object clone()
     {
-        return new ADivExp(
-            cloneNode(this._left_),
-            cloneNode(this._slash_),
+        return new APosSign(
+            cloneNode(this._plus_),
             cloneNode(this._right_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseADivExp(this);
+        ((Analysis) sw).caseAPosSign(this);
     }
 
-    public PExp getLeft()
+    public TPlus getPlus()
     {
-        return this._left_;
+        return this._plus_;
     }
 
-    public void setLeft(PExp node)
+    public void setPlus(TPlus node)
     {
-        if(this._left_ != null)
+        if(this._plus_ != null)
         {
-            this._left_.parent(null);
+            this._plus_.parent(null);
         }
 
         if(node != null)
@@ -67,32 +62,7 @@ public final class ADivExp extends PExp
             node.parent(this);
         }
 
-        this._left_ = node;
-    }
-
-    public TSlash getSlash()
-    {
-        return this._slash_;
-    }
-
-    public void setSlash(TSlash node)
-    {
-        if(this._slash_ != null)
-        {
-            this._slash_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._slash_ = node;
+        this._plus_ = node;
     }
 
     public PTerm getRight()
@@ -124,8 +94,7 @@ public final class ADivExp extends PExp
     public String toString()
     {
         return ""
-            + toString(this._left_)
-            + toString(this._slash_)
+            + toString(this._plus_)
             + toString(this._right_);
     }
 
@@ -133,15 +102,9 @@ public final class ADivExp extends PExp
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._left_ == child)
+        if(this._plus_ == child)
         {
-            this._left_ = null;
-            return;
-        }
-
-        if(this._slash_ == child)
-        {
-            this._slash_ = null;
+            this._plus_ = null;
             return;
         }
 
@@ -158,15 +121,9 @@ public final class ADivExp extends PExp
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._left_ == oldChild)
+        if(this._plus_ == oldChild)
         {
-            setLeft((PExp) newChild);
-            return;
-        }
-
-        if(this._slash_ == oldChild)
-        {
-            setSlash((TSlash) newChild);
+            setPlus((TPlus) newChild);
             return;
         }
 
